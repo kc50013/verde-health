@@ -1,0 +1,209 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Verde Health – Home">
+  <!-- HERO SLIDER -->
+  <section class="relative w-full h-[460px] md:h-[520px] overflow-hidden rounded-b-2xl">
+    <!-- Slides -->
+    <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100"
+         data-slide="0"
+         style="background-image:url('/hero-1.jpg'); background-size:cover; background-position:center;">
+      <div class="w-full h-full bg-black/40 flex items-center">
+        <div class="max-w-5xl mx-auto px-6 md:px-8">
+          <div class="max-w-xl bg-white/80 md:bg-white/85 rounded-2xl p-6 md:p-8">
+            <p class="text-xs font-semibold tracking-[0.25em] text-emerald-700 uppercase">
+              Community-Driven Health
+            </p>
+            <h1 class="mt-3 text-2xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+              Always a way to realise healthier communities.
+            </h1>
+            <p class="mt-4 text-sm md:text-base text-gray-700 leading-relaxed">
+              Verde Health works alongside clinics, communities and local leaders to
+              expand access to essential health, imaging and social services in Zambia.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="/about" class="px-4 py-2 rounded-full text-sm font-semibold text-white bg-emerald-700 hover:bg-emerald-800">
+                Learn about our mission
+              </a>
+              <a href="/solutions" class="px-4 py-2 rounded-full text-sm font-semibold text-emerald-700 bg-white border border-emerald-600 hover:bg-emerald-50">
+                Explore our programs
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0"
+         data-slide="1"
+         style="background-image:url('/hero-2.jpg'); background-size:cover; background-position:center;">
+      <div class="w-full h-full bg-black/40 flex items-center">
+        <div class="max-w-5xl mx-auto px-6 md:px-8">
+          <div class="max-w-xl bg-white/80 md:bg-white/85 rounded-2xl p-6 md:p-8">
+            <p class="text-xs font-semibold tracking-[0.25em] text-emerald-700 uppercase">
+              Care That Reaches People
+            </p>
+            <h2 class="mt-3 text-2xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+              From outreach clinics to imaging hubs, we meet people where they live.
+            </h2>
+            <p class="mt-4 text-sm md:text-base text-gray-700 leading-relaxed">
+              Mobile teams, tele-consults and trusted community partners help us close
+              the distance between households and quality health services.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="/solutions/health-outreach" class="px-4 py-2 rounded-full text-sm font-semibold text-white bg-emerald-700 hover:bg-emerald-800">
+                See outreach work
+              </a>
+              <a href="/impact/kitwe" class="px-4 py-2 rounded-full text-sm font-semibold text-emerald-700 bg-white border border-emerald-600 hover:bg-emerald-50">
+                View our impact
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0"
+         data-slide="2"
+         style="background-image:url('/hero-3.jpg'); background-size:cover; background-position:center;">
+      <div class="w-full h-full bg-black/45 flex items-center">
+        <div class="max-w-5xl mx-auto px-6 md:px-8">
+          <div class="max-w-xl bg-white/80 md:bg-white/85 rounded-2xl p-6 md:p-8">
+            <p class="text-xs font-semibold tracking-[0.25em] text-emerald-700 uppercase">
+              Data • Dignity • Environment
+            </p>
+            <h2 class="mt-3 text-2xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+              Evidence-based programs that protect both people and planet.
+            </h2>
+            <p class="mt-4 text-sm md:text-base text-gray-700 leading-relaxed">
+              From environmental assessments to policy briefs, we turn community data
+              into practical solutions for healthier homes, schools and workplaces.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="/solutions/research-data-policy" class="px-4 py-2 rounded-full text-sm font-semibold text-white bg-emerald-700 hover:bg-emerald-800">
+                Learn about our research
+              </a>
+              <a href="/partner" class="px-4 py-2 rounded-full text-sm font-semibold text-emerald-700 bg-white border border-emerald-600 hover:bg-emerald-50">
+                Partner with us
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slider dots -->
+    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
+      <button class="hero-dot w-2.5 h-2.5 rounded-full bg-white/70" data-dot="0"></button>
+      <button class="hero-dot w-2.5 h-2.5 rounded-full bg-white/40" data-dot="1"></button>
+      <button class="hero-dot w-2.5 h-2.5 rounded-full bg-white/40" data-dot="2"></button>
+    </div>
+  </section>
+
+  <!-- CONTENT BELOW SO YOU CAN SCROLL / TEST STICKY HEADER -->
+  <section class="mt-16 max-w-5xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-emerald-800">
+      What Verde Health Does
+    </h2>
+    <p class="mt-4 text-gray-700 leading-relaxed">
+      Verde Health Alliance is a Zambia-based initiative focused on public health,
+      medical imaging, environmental health and social work. We design programs that
+      are practical, affordable and rooted in community realities.
+    </p>
+
+    <div class="mt-8 grid gap-6 md:grid-cols-3">
+      <div class="border rounded-2xl p-5 shadow-sm">
+        <h3 class="font-semibold text-emerald-800">Health Outreach</h3>
+        <p class="mt-2 text-sm text-gray-700">
+          Mobile clinics, screenings and SRHR outreach for underserved communities.
+        </p>
+      </div>
+      <div class="border rounded-2xl p-5 shadow-sm">
+        <h3 class="font-semibold text-emerald-800">Imaging &amp; Lab</h3>
+        <p class="mt-2 text-sm text-gray-700">
+          Affordable X-ray, ultrasound and laboratory diagnostics through hub-and-spoke models.
+        </p>
+      </div>
+      <div class="border rounded-2xl p-5 shadow-sm">
+        <h3 class="font-semibold text-emerald-800">Social &amp; Environmental Work</h3>
+        <p class="mt-2 text-sm text-gray-700">
+          Social work, counselling and environmental assessments that protect families and workers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-24 max-w-5xl mx-auto mb-24">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-emerald-800">
+      Where We Work
+    </h2>
+    <p class="mt-4 text-gray-700 leading-relaxed">
+      Our initial focus is on the Copperbelt (Kitwe, Kalulushi and Chambishi), with plans to
+      expand into Lusaka and additional districts as partnerships and funding grow.
+    </p>
+
+    <div class="mt-6 grid gap-6 md:grid-cols-3">
+      <div class="border rounded-2xl p-5 shadow-sm">
+        <h3 class="font-semibold text-emerald-800">Kitwe</h3>
+        <p class="mt-2 text-sm text-gray-700">
+          Urban and peri-urban communities around health facilities and mine-impacted areas.
+        </p>
+      </div>
+      <div class="border rounded-2xl p-5 shadow-sm">
+        <h3 class="font-semibold text-emerald-800">Kalulushi</h3>
+        <p class="mt-2 text-sm text-gray-700">
+          Mining-adjacent communities and rural schools in need of health and environmental support.
+        </p>
+      </div>
+      <div class="border rounded-2xl p-5 shadow-sm">
+        <h3 class="font-semibold text-emerald-800">Chambishi</h3>
+        <p class="mt-2 text-sm text-gray-700">
+          Industrial corridor communities balancing employment opportunities and health risks.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slider script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const slides = Array.from(document.querySelectorAll(".hero-slide"));
+      const dots = Array.from(document.querySelectorAll(".hero-dot"));
+      if (!slides.length) return;
+
+      let current = 0;
+      const showSlide = (index) => {
+        slides.forEach((s, i) => {
+          s.style.opacity = i === index ? "1" : "0";
+        });
+        dots.forEach((d, i) => {
+          d.style.backgroundColor =
+            i === index ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.4)";
+        });
+        current = index;
+      };
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener("click", () => {
+          showSlide(i);
+          restart();
+        });
+      });
+
+      const next = () => {
+        const n = (current + 1) % slides.length;
+        showSlide(n);
+      };
+
+      let timer = setInterval(next, 7000); // change every 7 seconds
+
+      const restart = () => {
+        clearInterval(timer);
+        timer = setInterval(next, 7000);
+      };
+
+      showSlide(0);
+    });
+  </script>
+</Layout>

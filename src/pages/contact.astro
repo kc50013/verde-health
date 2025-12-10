@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Contact — Verde Health">
+  <section class="max-w-3xl mx-auto px-4 py-12">
+    <h1 class="text-4xl font-extrabold text-emerald-700">Contact</h1>
+    <p class="mt-4 text-gray-700">
+      Have a question, partnership idea, or want to volunteer? Send us a note.
+    </p>
+
+    <!-- Non-functional demo form (you can wire this to a backend later) -->
+    <form class="mt-8 space-y-4" netlify>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Name</label>
+        <input class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Your name" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="email" class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="you@example.com" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Message</label>
+        <textarea rows="5" class="mt-1 w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="How can we help?"></textarea>
+      </div>
+      <button type="submit" class="inline-flex items-center rounded-lg bg-emerald-600 px-5 py-2 font-semibold text-white hover:bg-emerald-700">
+        Send
+      </button>
+    </form>
+
+    <div class="mt-10 text-sm text-gray-600">
+      <p><span class="font-semibold">Email:</span> info@verdehealth.org</p>
+      <p><span class="font-semibold">Location:</span> Kitwe, Copperbelt, Zambia</p>
+    </div>
+  </section>
+</Layout>
