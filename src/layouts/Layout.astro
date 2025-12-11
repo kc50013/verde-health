@@ -27,7 +27,12 @@ const { title = "Verde Health" } = Astro.props;
       <div class="max-w-6xl mx-auto h-14 flex items-center justify-end gap-6 px-4">
 
         <!-- Search icon -->
-        <button class="hover:opacity-80 flex items-center justify-center">
+        <button
+          class="hover:opacity-80 flex items-center justify-center"
+          type="button"
+          aria-label="Open search"
+          data-search-toggle
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="w-6 h-6"
@@ -366,20 +371,60 @@ const { title = "Verde Health" } = Astro.props;
       </div>
     </footer>
 
-    <!-- MENU + SCROLL BEHAVIOUR -->
+    <!-- SEARCH OVERLAY -->
+    <div
+      class="fixed inset-0 bg-black/40 z-50 hidden items-start justify-center pt-24 px-4"
+      data-search-overlay
+    >
+      <div
+        class="w-full max-w-xl bg-white rounded-2xl shadow-lg p-4 flex flex-col gap-3"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search Verde Health"
+      >
+        <div class="flex items-center gap-3">
+          <input
+            type="search"
+            placeholder="Search Verde Health..."
+            class="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            data-search-input
+          />
+          <button
+            type="button"
+            class="text-sm font-semibold text-emerald-700"
+            data-search-close
+          >
+            Cancel
+          </button>
+        </div>
+        <!-- Placeholder text; later you can hook this up to real search results -->
+        <p class="text-xs text-gray-500">
+         
+        </p>
+      </div>
+    </div>
+
+    <!-- MENU + SCROLL + SEARCH BEHAVIOUR -->
+    <!-- MENU + SCROLL + SEARCH BEHAVIOUR -->
+        <!-- MENU + SCROLL + SEARCH (compact header only, no jitter) -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // + / × toggle menus
+        // + / × toggle desktop dropdown menus
         const toggles = document.querySelectorAll("[data-menu-toggle]");
         toggles.forEach((btn) => {
           const id = btn.getAttribute("data-menu-toggle");
-          const panel = document.querySelector(`[data-menu-panel="${id}"]`);
-          const icon = document.querySelector(`[data-menu-icon="${id}"]`);
+          const panel = document.querySelector(
+            '[data-menu-panel="' + id + '"]'
+          );
+          const icon = document.querySelector(
+            '[data-menu-icon="' + id + '"]'
+          );
           if (!panel || !icon) return;
 
           btn.addEventListener("click", () => {
             const isHidden = panel.classList.contains("hidden");
 
+            // close all menus first
             document
               .querySelectorAll("[data-menu-panel]")
               .forEach((p) => p.classList.add("hidden"));
@@ -387,6 +432,7 @@ const { title = "Verde Health" } = Astro.props;
               .querySelectorAll("[data-menu-icon]")
               .forEach((i) => (i.textContent = "+"));
 
+            // then toggle clicked one
             if (isHidden) {
               panel.classList.remove("hidden");
               icon.textContent = "×";
@@ -397,28 +443,22 @@ const { title = "Verde Health" } = Astro.props;
           });
         });
 
-        // scroll: switch between full header and compact header
-        const fullTopbar = document.querySelector("[data-full-topbar]");
-        const fullNav = document.querySelector("[data-full-nav]");
+        // SHOW / HIDE COMPACT HEADER ON SCROLL (does NOT touch full header)
         const compactHeader = document.querySelector("[data-compact-header]");
 
         const handleScroll = () => {
-          const showCompact = window.scrollY > 140;
-          if (!fullNav || !compactHeader) return;
+          if (!compactHeader) return;
+          const showCompact = window.scrollY > 140; // adjust threshold if you like
 
           if (showCompact) {
             compactHeader.classList.remove("hidden");
-            fullTopbar && fullTopbar.classList.add("hidden");
-            fullNav.classList.add("hidden");
           } else {
             compactHeader.classList.add("hidden");
-            fullTopbar && fullTopbar.classList.remove("hidden");
-            fullNav.classList.remove("hidden");
           }
         };
 
-        window.addEventListener("scroll", handleScroll);
-        handleScroll(); // run once on load
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
 
         // compact "Menu" button: scroll back to top
         const compactMenuBtn = document.querySelector(
@@ -429,7 +469,56 @@ const { title = "Verde Health" } = Astro.props;
             window.scrollTo({ top: 0, behavior: "smooth" });
           });
         }
+
+        // SEARCH OVERLAY
+        const searchOverlay = document.querySelector("[data-search-overlay]");
+        const searchInput = document.querySelector("[data-search-input]");
+        const searchToggleBtns =
+          document.querySelectorAll("[data-search-toggle]");
+        const searchCloseBtns =
+          document.querySelectorAll("[data-search-close]");
+
+        const openSearch = () => {
+          if (!searchOverlay) return;
+          searchOverlay.classList.remove("hidden");
+          searchOverlay.classList.add("flex");
+          document.body.classList.add("overflow-hidden");
+          if (searchInput) {
+            setTimeout(() => searchInput.focus(), 50);
+          }
+        };
+
+        const closeSearch = () => {
+          if (!searchOverlay) return;
+          searchOverlay.classList.add("hidden");
+          searchOverlay.classList.remove("flex");
+          document.body.classList.remove("overflow-hidden");
+        };
+
+        searchToggleBtns.forEach((btn) =>
+          btn.addEventListener("click", openSearch)
+        );
+        searchCloseBtns.forEach((btn) =>
+          btn.addEventListener("click", closeSearch)
+        );
+
+        if (searchOverlay) {
+          // click on dark backdrop closes search
+          searchOverlay.addEventListener("click", (e) => {
+            if (e.target === searchOverlay) {
+              closeSearch();
+            }
+          });
+        }
+
+        // ESC key closes search
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            closeSearch();
+          }
+        });
       });
     </script>
+
   </body>
 </html>
